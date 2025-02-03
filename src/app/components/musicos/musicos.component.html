@@ -1,0 +1,8 @@
+<div *ngFor="let musico of musicos"> 
+    {{musico.username}} - <span (click)="deletaMusico(musico.username)">deletar</span>
+</div>
+
+<div >
+    <input type="text" name="" [(ngModel)]="nomeDoMusico">
+    <input (click)="createMusico()" type="submit" value="enviar">
+</div>
