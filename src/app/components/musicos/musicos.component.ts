@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Musico } from '../../models/musico';
 
 @Component({
   selector: 'app-musicos',
@@ -15,15 +16,24 @@ import { FormsModule } from '@angular/forms';
 export class MusicosComponent {
   nomeDoMusico: string = "";
   
-  musicos = [
+  musicos: Musico[] = [
     {
-      'username':'porras'
+      "username":"Portas"
+    },
+    {
+      "username":"Robz"
+    },
+    {
+      "username":"Beca"
+    },
+    {
+      "username":"Paulo"
     }
   ]
 
   createMusico() {
     this.musicos.push({'username':this.nomeDoMusico})
-
+    this.nomeDoMusico = ""
   }
 
   deletaMusico(username: string) {
@@ -32,4 +42,11 @@ export class MusicosComponent {
         this.musicos.splice(index, 1);
     })
   }
+
+  atualizaMusico(e: Event, m: Musico) {
+    let inputElement = (<HTMLTextAreaElement>e.target)!
+    m.username = inputElement.value;
+    inputElement.value = "";
+  }
+
 }

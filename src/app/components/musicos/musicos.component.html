@@ -1,8 +1,14 @@
-<div *ngFor="let musico of musicos"> 
-    {{musico.username}} - <span (click)="deletaMusico(musico.username)">deletar</span>
-</div>
+<h1>Worlds musicians</h1>
+
+
+<ul>
+    <li *ngFor="let musico of musicos"> 
+        {{musico.username}} - <span (click)="deletaMusico(musico.username)">deletar</span> - <input (keydown.enter)="atualizaMusico($event, musico)" type="text" placeholder="Novo nome">
+    </li>
+</ul>
 
 <div >
-    <input type="text" name="" [(ngModel)]="nomeDoMusico">
-    <input (click)="createMusico()" type="submit" value="enviar">
+    <label for="musiconome">Nome</label> <br>
+    <input id="musiconome" type="text" name="" (keydown.enter)="createMusico()" [(ngModel)]="nomeDoMusico" placeholder="Digite o nome do músico">
+    <input (click)="createMusico()"  type="submit" value="Enviar">
 </div>
